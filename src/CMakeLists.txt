@@ -1,0 +1,6 @@
+add_library(marchers_lib march.cpp)
+target_include_directories(marchers_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_compile_options(marchers_lib PRIVATE -Wall -Wextra -Werror -pedantic-errors)
+add_executable(marchers main.cpp)
+target_compile_options(marchers PRIVATE -Wall -Wextra -Werror -pedantic-errors)
+target_link_libraries(marchers PRIVATE marchers_lib)
