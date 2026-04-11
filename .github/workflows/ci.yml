@@ -11,6 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-format cmake ninja-build
+
+      - name: Check formatting
+        run: clang-format --dry-run --Werror --style=file $(git ls-files '*.cpp' '*.h')
+
       - name: Configure
         run: cmake -S . -B build -G Ninja
 
