@@ -6,9 +6,11 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-add_executable(marchers_unit_tests truth_test.cpp)
-target_link_libraries(marchers_unit_tests PRIVATE GTest::gtest_main)
-marchers_apply_warnings(marchers_unit_tests)
+add_executable(marchers_unit_tests decompress_test.cpp)
+target_link_libraries(marchers_unit_tests PRIVATE
+  marchers_lib
+  GTest::gtest_main
+)
 
 include(GoogleTest)
 gtest_discover_tests(marchers_unit_tests)
